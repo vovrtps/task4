@@ -6,6 +6,7 @@ import data_plotting as dplt
  вызывает функции загрузки и обработки данных, 
  а затем передаёт результаты на визуализацию.'''
 
+
 def main():
     print("Добро пожаловать в инструмент получения и построения графиков биржевых данных.")
     print("Вот несколько примеров биржевых тикеров, которые вы можете рассмотреть: AAPL (Apple Inc), GOOGL (Alphabet Inc), MSFT (Microsoft Corporation), AMZN (Amazon.com Inc), TSLA (Tesla Inc).")
@@ -25,7 +26,6 @@ def main():
 
     # выводит среднюю цену закрытия акций за заданный период.
     print(dd.calculate_and_display_average_price(stock_data))
-
 
 
 if __name__ == "__main__":

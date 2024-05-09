@@ -8,6 +8,7 @@ def fetch_stock_data(ticker, period='1mo'):
     data = stock.history(period=period)
     return data
 
+
 def calculate_and_display_average_price(data):
     df = data['Close'].tolist()
     ddf = sum(df)
