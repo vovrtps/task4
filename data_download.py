@@ -1,4 +1,5 @@
 import yfinance as yf
+import pandas as pd
 
 
 def fetch_stock_data(ticker, period='1mo'):
@@ -10,9 +11,20 @@ def fetch_stock_data(ticker, period='1mo'):
 
 
 def calculate_and_display_average_price(data):
+    '''Ищет среднюю цену закрытия акций за заданный период'''
     df = data['Close'].tolist()
     ddf = sum(df)
     return ddf / len(df)
+
+
+def notify_if_strong_fluctuations(data, threshold):
+    '''Уведомляет если превышен порог'''
+    df = pd.DataFrame(data['Close'])
+    df_max = df.max()
+    df_min = df.min()
+    difference = (float(df_max.iloc[0] - float(df_min.iloc[0])))
+    if difference > threshold:
+        print('Превышен заданный порог')
 
 
 def add_moving_average(data, window_size=5):
