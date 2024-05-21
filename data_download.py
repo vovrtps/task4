@@ -28,6 +28,7 @@ def notify_if_strong_fluctuations(data, threshold):
 
 
 def export_data_to_csv(data, filename):
+    '''экспортировать данные в CSV формате'''
     df = pd.DataFrame(data)
     df.to_csv(filename, encoding='utf-8', index=False)
 
