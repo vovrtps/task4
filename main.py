@@ -31,6 +31,8 @@ def main():
     # уведомляет если превышен порог
     dd.notify_if_strong_fluctuations(stock_data, threshold)
 
+    dd.export_data_to_csv(stock_data, 'information_about_promotions.csv')
+
 
 if __name__ == "__main__":
     main()

@@ -27,6 +27,11 @@ def notify_if_strong_fluctuations(data, threshold):
         print('Превышен заданный порог')
 
 
+def export_data_to_csv(data, filename):
+    df = pd.DataFrame(data)
+    df.to_csv(filename, encoding='utf-8', index=False)
+
+
 def add_moving_average(data, window_size=5):
     '''Добавляет в DataFrame колонку со скользящим средним, рассчитанным на основе цен закрытия.'''
     data['Moving_Average'] = data['Close'].rolling(window=window_size).mean()
