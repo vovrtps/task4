@@ -22,8 +22,11 @@ def main():
     # Добавьте скользящее среднее значение к данным
     stock_data = dd.add_moving_average(stock_data)
 
+    # индикатор MACD
+    ind_macd = dd.indicator_macd(stock_data)
+
     # Построим график данных
-    dplt.create_and_save_plot(stock_data, ticker, period)
+    dplt.create_and_save_plot(stock_data, ticker, period, ind_macd)
 
     # выводит среднюю цену закрытия акций за заданный период.
     print(dd.calculate_and_display_average_price(stock_data))
@@ -33,6 +36,8 @@ def main():
 
     # экспортировать данные в CSV формате
     dd.export_data_to_csv(stock_data, 'information_about_promotions.csv')
+
+
 
 
 if __name__ == "__main__":

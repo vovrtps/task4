@@ -2,6 +2,7 @@ import yfinance as yf
 import pandas as pd
 
 
+
 def fetch_stock_data(ticker, period='1mo'):
     '''Получает исторические данные об акциях для указанного тикера и временного периода.
      Возвращает DataFrame с данными.'''
@@ -31,6 +32,16 @@ def export_data_to_csv(data, filename):
     '''экспортировать данные в CSV формате'''
     df = pd.DataFrame(data)
     df.to_csv(filename, encoding='utf-8', index=False)
+
+
+def indicator_macd(data):
+    '''расчёт индикатора MACD'''
+    ema12 = data['Close'].ewm(span=12).mean()
+    ema26 = data['Close'].ewm(span=26).mean()
+    macd = ema12 - ema26
+    macd_signal = macd.ewm(span=9).mean()
+    macd_histogram = macd - macd_signal
+    return macd_histogram * 30 + 160
 
 
 def add_moving_average(data, window_size=5):
